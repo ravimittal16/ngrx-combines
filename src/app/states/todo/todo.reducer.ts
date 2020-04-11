@@ -18,8 +18,36 @@ export const initialToDoState: TodoState = {
 
 //03 simple reducer
 
+const createTodo = (todos: ToDoItem[], newTodo: ToDoItem) => [
+  ...todos,
+  newTodo,
+];
+
+const updateTodo = (todos: ToDoItem[], todo: ToDoItem) =>
+  todos.map((x) => {
+    return x.id === todo.id ? Object.assign({}, todo) : todo;
+  });
+
+const deleteToDo = (todos: ToDoItem[], todo: ToDoItem) =>
+  todos.filter((x) => x.id !== todo.id);
+
 export function todoReducer(state = initialToDoState, action): TodoState {
   switch (action.type) {
+    case 'create':
+      return {
+        selectedTodoId: state.selectedTodoId,
+        todos: createTodo(state.todos, action.payload),
+      };
+    case 'update':
+      return {
+        selectedTodoId: state.selectedTodoId,
+        todos: updateTodo(state.todos, action.payload),
+      };
+    case 'delete':
+      return {
+        selectedTodoId: state.selectedTodoId,
+        todos: deleteToDo(state.todos, action.payload),
+      };
     default:
       return state;
   }
