@@ -1,4 +1,5 @@
 import { ToDoItem } from 'src/app/models/todo.model';
+import { ToDoActionTypes } from './todo.actions';
 
 //1. Declare a state
 export interface TodoState {
@@ -31,19 +32,20 @@ const updateTodo = (todos: ToDoItem[], todo: ToDoItem) =>
 const deleteToDo = (todos: ToDoItem[], todo: ToDoItem) =>
   todos.filter((x) => x.id !== todo.id);
 
+//reducer will have everything about your state
 export function todoReducer(state = initialToDoState, action): TodoState {
   switch (action.type) {
-    case 'create':
+    case ToDoActionTypes.CreateTodo: // 'create': //action
       return {
         selectedTodoId: state.selectedTodoId,
         todos: createTodo(state.todos, action.payload),
       };
-    case 'update':
+    case ToDoActionTypes.UpdateTodo:
       return {
         selectedTodoId: state.selectedTodoId,
         todos: updateTodo(state.todos, action.payload),
       };
-    case 'delete':
+    case ToDoActionTypes.DeleteTodo:
       return {
         selectedTodoId: state.selectedTodoId,
         todos: deleteToDo(state.todos, action.payload),

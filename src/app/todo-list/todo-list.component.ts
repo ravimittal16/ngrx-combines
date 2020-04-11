@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators/';
 import { ToDoItem } from '../models/todo.model';
 import { AppState } from '../states/todo';
+import { DeleteTodo } from '../states/todo/todo.actions';
 
 @Component({
   selector: 'app-todo-list',
@@ -14,7 +15,9 @@ import { AppState } from '../states/todo';
 export class TodoListComponent implements OnInit {
   todos$: Observable<ToDoItem[]>;
   constructor(private _store: Store<AppState>) {}
-
+  deleteItemClicked(item: ToDoItem): void {
+    this._store.dispatch(new DeleteTodo(item));
+  }
   ngOnInit(): void {
     this.todos$ = this._store.pipe(
       select('todos'),

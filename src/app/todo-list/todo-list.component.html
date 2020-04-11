@@ -12,7 +12,9 @@
 
       <div class="card">
         <ul class="list-group list-group-flush">
-          <li *ngFor="let item of todos$ | async" class="list-group-item">{{item.title}}</li>
+          <li *ngFor="let item of todos$ | async" class="list-group-item">{{item.title}}
+            <button type="button" class="btn btn-danger" (click)="deleteItemClicked(item)">Delete</button>
+          </li>
 
         </ul>
       </div>
