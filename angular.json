@@ -128,4 +128,5 @@
     "analytics": false,
     "defaultCollection": "@ngrx/schematics"
   }
+
 }
