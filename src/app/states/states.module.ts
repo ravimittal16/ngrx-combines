@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -10,7 +11,7 @@ import { reducers } from './todo';
   imports: [
     CommonModule,
     StoreModule.forRoot(reducers),
-
+    HttpClientModule,
     EffectsModule.forRoot([]),
     environment.production
       ? []
