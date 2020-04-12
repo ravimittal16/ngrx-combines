@@ -3,7 +3,7 @@ import { ToDoActionTypes } from './todo.actions';
 import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 
 export const dummyTodos: ToDoItem[] = [
-  { id: 1, isComplted: false, title: 'Work Order', description: 'Hello World' },
+  { ie: 1, completed: false, title: 'Work Order', description: 'Hello World' },
 ];
 
 //1. Declare a state
@@ -44,18 +44,19 @@ const createTodo = (todos: ToDoItem[], newTodo: ToDoItem) => [
 
 const updateTodo = (todos: ToDoItem[], todo: ToDoItem) =>
   todos.map((x) => {
-    return x.id === todo.id ? Object.assign({}, todo) : todo;
+    return x.ie === todo.ie ? Object.assign({}, todo) : todo;
   });
 
 const deleteToDo = (todos: ToDoItem[], todo: ToDoItem) =>
-  todos.filter((x) => x.id !== todo.id);
+  todos.filter((x) => x.ie !== todo.ie);
 
 //reducer will have everything about your state
 export function todoReducer(state = initialTodoState, action): TodoState {
   switch (action.type) {
-    case ToDoActionTypes.CreateTodo:
+    case ToDoActionTypes.TodoCreated:
       return adapter.addOne(action.payload, state);
-    case ToDoActionTypes.LoadTodos:
+    case ToDoActionTypes.TodosLoaded:
+      console.log('HELLLLLL');
       return adapter.addMany(action.payload, state);
     case ToDoActionTypes.UpdateTodo:
       return adapter.updateOne(action.payload, state);

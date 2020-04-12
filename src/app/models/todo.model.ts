@@ -1,6 +1,7 @@
 export class ToDoItem {
   title: string;
-  id: number;
-  isComplted: boolean;
+  ie?: number;
+  completed?: boolean;
   description?: string;
+  userId?: number;
 }

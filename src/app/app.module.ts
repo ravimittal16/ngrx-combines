@@ -6,10 +6,11 @@ import { AppComponent } from './app.component';
 import { TodoListComponent } from './todo-list/todo-list.component';
 import { StatesModule } from './states/states.module';
 import { AddTodoComponent } from './add-todo/add-todo.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent, TodoListComponent, AddTodoComponent],
-  imports: [BrowserModule, AppRoutingModule, StatesModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, StatesModule],
   providers: [],
   bootstrap: [AppComponent],
 })

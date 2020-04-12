@@ -20,11 +20,11 @@ export class TodoListComponent implements OnInit {
   todos$: Observable<ToDoItem[]>;
   constructor(private _store: Store<AppState>) {}
   deleteItemClicked(item: ToDoItem): void {
-    this._store.dispatch(new DeleteTodo(item.id));
+    this._store.dispatch(new DeleteTodo(item.ie));
   }
 
   loadTodos(): void {
-    this._store.dispatch(new LoadTodos(dummyTodos));
+    this._store.dispatch(new LoadTodos());
   }
   // selection of data will be change using entity, and this will be set the stage for selectors
   ngOnInit(): void {

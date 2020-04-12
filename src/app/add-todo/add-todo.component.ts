@@ -15,9 +15,9 @@ export class AddTodoComponent implements OnInit {
   addTodoClicked(): void {
     const _id = 323 * Math.random();
     const todoItem: ToDoItem = {
-      id: _id,
+      ie: _id,
       title: 'Todo Item' + _id.toString(),
-      isComplted: false,
+      completed: false,
       description: 'Another test',
     };
     //Common dispatch
